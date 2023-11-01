@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package api;
+
+enum IntentType {
+    HIGH-BANDWIDTH = 0;
+    LOW-BANDWIDTH = 1;
+    LOW-LATENCY = 2;
+}
+
+message Intent {
+  string domain_name = 1;
+  IntentType intent = 2;
+}
+
+message Response {
+  repeated string ipv6_addresses = 1;
+}
+
+service IntentService {
+    rpc GetIntentDetails(Intent) returns (Response);
+}
