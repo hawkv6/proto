@@ -3,9 +3,10 @@ syntax = "proto3";
 package api;
 
 enum IntentType {
-    HIGH-BANDWIDTH = 0;
-    LOW-BANDWIDTH = 1;
-    LOW-LATENCY = 2;
+  INTENT_TYPE_UNSPECIFIED = 0;
+  INTENT_TYPE_HIGH_BANDWIDTH = 1;
+  INTENT_TYPE_LOW_BANDWIDTH = 2;
+  INTENT_TYPE_LOW_LATENCY = 3;
 }
 
 message Intent {
@@ -18,5 +19,5 @@ message Response {
 }
 
 service IntentService {
-    rpc GetIntentDetails(Intent) returns (Response);
+  rpc GetIntentDetails(Intent) returns (Response);
 }
