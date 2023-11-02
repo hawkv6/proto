@@ -15,7 +15,9 @@ message Intent {
 }
 
 message Response {
-  repeated string ipv6_addresses = 1;
+  string domain_name = 1;
+  IntentType intent = 2;
+  repeated string ipv6_addresses = 3;
 }
 
 service IntentService {
