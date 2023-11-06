@@ -7,19 +7,40 @@ enum IntentType {
   INTENT_TYPE_HIGH_BANDWIDTH = 1;
   INTENT_TYPE_LOW_BANDWIDTH = 2;
   INTENT_TYPE_LOW_LATENCY = 3;
+  INTENT_TYPE_LOW_PACKET_LOSS = 4;
+  INTENT_TYPE_LOW_JITTER = 5;
 }
 
-message Intent {
-  string domain_name = 1;
-  IntentType intent = 2;
+enum ValueType {
+  VALUE_TYPE_UNSPECIFIED = 0;
+  VALUE_TYPE_MIN_VALUE = 1;
+  VALUE_TYPE_MAX_VALUE = 2;
+  VALUE_TYPE_SFC = 3;
+  VALUE_TYPE_FLEX_ALGO_NR = 4;
 }
 
-message Response {
-  string domain_name = 1;
-  IntentType intent = 2;
-  repeated string ipv6_addresses = 3;
+message Value {
+  ValueType type = 0;
+  optional int32 number_value = 1;
+  optional string string_value = 2;
 }
 
-service IntentService {
-  rpc GetIntentDetails(Intent) returns (Response);
+message Intent{
+  IntentType type = 1;
+  repeated Value values = 2;
+}
+
+message PathRequest {
+  string ipv6_destination_address= 1;
+  repeated Intent intents = 2;
+}
+
+message PathResult {
+  string ipv6_destination_address = 1;
+  repeated Intent intents = 2;
+  repeated string ipv6_sid_addresses = 3;
+}
+
+service IntentController {
+  rpc GetIntentPath(Intent) returns (stream PathResult);
 }
