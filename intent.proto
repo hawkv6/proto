@@ -42,5 +42,5 @@ message PathResult {
 }
 
 service IntentController {
-  rpc GetIntentPath(Intent) returns (stream PathResult);
+  rpc GetIntentPath(PathRequest) returns (stream PathResult);
 }
