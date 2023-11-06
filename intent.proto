@@ -20,9 +20,9 @@ enum ValueType {
 }
 
 message Value {
-  ValueType type = 0;
-  optional int32 number_value = 1;
-  optional string string_value = 2;
+  ValueType type = 1;
+  optional int32 number_value = 2;
+  optional string string_value = 3;
 }
 
 message Intent{
