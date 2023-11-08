@@ -9,6 +9,8 @@ enum IntentType {
   INTENT_TYPE_LOW_LATENCY = 3;
   INTENT_TYPE_LOW_PACKET_LOSS = 4;
   INTENT_TYPE_LOW_JITTER = 5;
+  INTENT_TYPE_FLEX_ALGO = 6;
+  INTENT_TYPE_SFC = 7;
 }
 
 enum ValueType {
@@ -25,13 +27,13 @@ message Value {
   optional string string_value = 3;
 }
 
-message Intent{
+message Intent {
   IntentType type = 1;
   repeated Value values = 2;
 }
 
 message PathRequest {
-  string ipv6_destination_address= 1;
+  string ipv6_destination_address = 1;
   repeated Intent intents = 2;
 }
 
