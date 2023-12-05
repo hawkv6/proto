@@ -33,14 +33,16 @@ message Intent {
 }
 
 message PathRequest {
-  string ipv6_destination_address = 1;
-  repeated Intent intents = 2;
+  string ipv6_source_address = 1;
+  string ipv6_destination_address = 2;
+  repeated Intent intents = 3;
 }
 
 message PathResult {
-  string ipv6_destination_address = 1;
-  repeated Intent intents = 2;
-  repeated string ipv6_sid_addresses = 3;
+  string ipv6_source_address = 1;
+  string ipv6_destination_address = 2;
+  repeated Intent intents = 3;
+  repeated string ipv6_sid_addresses = 4;
 }
 
 service IntentController {
