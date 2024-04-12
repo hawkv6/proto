@@ -11,6 +11,7 @@ enum IntentType {
   INTENT_TYPE_LOW_JITTER = 5;
   INTENT_TYPE_FLEX_ALGO = 6;
   INTENT_TYPE_SFC = 7;
+  INTENT_TYPE_LOW_UTILIZATION = 8;
 }
 
 enum ValueType {
